@@ -11,6 +11,7 @@ import { MisTabsPage } from "../pages/mis-tabs/mis-tabs";
 import { InicioPage } from "../pages/inicio/inicio";
 import { ListadoPage } from "../pages/listado/listado";
 import { InfoPage } from "../pages/info/info";
+import { ModalNuevoSitioPage } from '../pages/modal-nuevo-sitio/modal-nuevo-sitio';
 
 import { BackgroundGeolocation } from "@ionic-native/background-geolocation";
 
@@ -20,7 +21,8 @@ import { BackgroundGeolocation } from "@ionic-native/background-geolocation";
     MisTabsPage,
     InicioPage,
     ListadoPage,
-    InfoPage
+    InfoPage,
+    ModalNuevoSitioPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { BackgroundGeolocation } from "@ionic-native/background-geolocation";
     MisTabsPage,
     InicioPage,
     ListadoPage,
-    InfoPage
+    InfoPage,
+    ModalNuevoSitioPage
   ],
   providers: [
     StatusBar,

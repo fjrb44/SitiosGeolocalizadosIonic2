@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
 import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation';
+// import { Geolocation } from 'ionic-native'; Esto no funciona
+import { Platform } from 'ionic-angular';
+import { ModalNuevoSitioPage } from '../modal-nuevo-sitio/modal-nuevo-sitio';
+
+declare var google: any;
 
 /**
  * Generated class for the InicioPage page.
@@ -16,12 +21,54 @@ import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocati
 })
 export class InicioPage {
   logs: string[] = [];
+  map: any; // Manejador
+  coords : any = { lat: 0, lng: 0 };
 
-  constructor(private backgroundGeolocation: BackgroundGeolocation, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    private backgroundGeolocation: BackgroundGeolocation,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public platform: Platform,
+    public modalCtrl: ModalController
+  ) {
+    platform.ready().then(() => {
+      this.obtenerPosicion();
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InicioPage');
+  }
+  nuevoSitio(){
+    // aquí vamos a abrir el modal para añadir nuestro sitio.
+    let mimodal = this.modalCtrl.create( ModalNuevoSitioPage,this.coords );
+    mimodal.present();
+  }
+
+  /*
+  loadMap(){
+    let mapContainer = document.getElementById('map');
+    this.map = new google.maps.Map(mapContainer, {
+      center: this.coords,
+      zoom: 12
+    });
+
+    let miMarker = new google.maps.Marker({
+      icon : 'assets/img/ico_estoy_aqui.png',
+      map: this.map,
+      position: this.coords
+    });
+  }
+  */
+
+  obtenerPosicion(): any{
+    //BackgroundGeolocation.getCurrentPosition
+    this.cambiarPosicion(36.5378761,-4.6399426);
+  }
+
+  cambiarPosicion(lat: number, lng: number){
+    this.coords.lat = lat;
+    this.coords.lng = lng;
   }
 
   start(){
@@ -47,7 +94,6 @@ export class InicioPage {
       console.log(location);
       this.logs.push(`${location.latitude},${location.longitude}`);
     });
-
     // start recording location
     this.backgroundGeolocation.start();
 

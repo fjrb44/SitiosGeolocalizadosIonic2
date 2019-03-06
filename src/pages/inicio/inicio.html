@@ -15,4 +15,12 @@
     Esta es la pagina de inicio, aquí situaremos un
     mapa con un boton de añadir lugar.
   </h1>
+  <div id="map">
+    <ion-fab right top>
+      <button ion-fab (tap)="nuevoSitio()">
+      <ion-icon name="pin"></ion-icon>
+      <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab>
+  </div>
 </ion-content>
