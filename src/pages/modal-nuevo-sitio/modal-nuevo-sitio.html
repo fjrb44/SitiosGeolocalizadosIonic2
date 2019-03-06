@@ -19,4 +19,25 @@
 
 <ion-content padding>
   <p>Hemos recibido: {{ coords.lat }}, {{ coords.lng }}<p>
+  <ion-card>
+    <ion-card-header>
+      Localización actual
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        <strong>lat: </strong>{{ coords.lat}}
+        <br/>
+        <strong>lng: </strong>{{coords.lng }}
+      </p>
+      <hr>
+      <p>
+        {{ coords.add }}
+      </p>
+      <hr/>
+      <form (ngSubmit)="guardarSitio()">
+        <button ion-button type="submit" block>Guardar Sitio</button>
+      </form>
+
+    </ion-card-content>
+  </ion-card>
 </ion-content>

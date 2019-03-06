@@ -14,6 +14,7 @@ import { InfoPage } from "../pages/info/info";
 import { ModalNuevoSitioPage } from '../pages/modal-nuevo-sitio/modal-nuevo-sitio';
 
 import { BackgroundGeolocation } from "@ionic-native/background-geolocation";
+import { CoordsProvider } from '../providers/coords/coords';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { BackgroundGeolocation } from "@ionic-native/background-geolocation";
     StatusBar,
     SplashScreen,
     BackgroundGeolocation,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CoordsProvider
   ]
 })
 export class AppModule {}

@@ -15,6 +15,26 @@
     Esta es la pagina de inicio, aquí situaremos un
     mapa con un boton de añadir lugar.
   </h1>
+  <button ion-button color="light" (click)="cambiarPosicion(36.5378761,-4.6399426, 'Ies vega de mijas')">
+    Vega de mijas
+  </button>
+  <br />
+  <button ion-button (click)="cambiarPosicion(1,1, 'First')">
+    Primero
+  </button>
+  <br />
+  <button ion-button color="secondary" (click)="cambiarPosicion(40,-5.6399426, 'Segundo')">
+    Segundo
+  </button>
+  <br />
+  <button ion-button color="danger" (click)="cambiarPosicion(3,-3, 'Tercero')">
+    Tercero
+  </button>
+  <br />
+  <button ion-button color="dark" (click)="cambiarPosicion(0,0, 'Darky')">
+    Darky
+  </button>
+
   <div id="map">
     <ion-fab right top>
       <button ion-fab (tap)="nuevoSitio()">

@@ -22,7 +22,8 @@ declare var google: any;
 export class InicioPage {
   logs: string[] = [];
   map: any; // Manejador
-  coords : any = { lat: 0, lng: 0 };
+  coords : any = { lat: 0, lng: 0, add: "" };
+  arrLugar: string[] = ["Ies vega de mijas"];
 
   constructor(
     private backgroundGeolocation: BackgroundGeolocation,
@@ -45,30 +46,15 @@ export class InicioPage {
     mimodal.present();
   }
 
-  /*
-  loadMap(){
-    let mapContainer = document.getElementById('map');
-    this.map = new google.maps.Map(mapContainer, {
-      center: this.coords,
-      zoom: 12
-    });
-
-    let miMarker = new google.maps.Marker({
-      icon : 'assets/img/ico_estoy_aqui.png',
-      map: this.map,
-      position: this.coords
-    });
-  }
-  */
-
   obtenerPosicion(): any{
     //BackgroundGeolocation.getCurrentPosition
-    this.cambiarPosicion(36.5378761,-4.6399426);
+    this.cambiarPosicion(36.5378761,-4.6399426, "Ies vega de mijas");
   }
 
-  cambiarPosicion(lat: number, lng: number){
+  cambiarPosicion(lat: number, lng: number, address: string){
     this.coords.lat = lat;
     this.coords.lng = lng;
+    this.coords.add = address;
   }
 
   start(){
@@ -85,8 +71,6 @@ export class InicioPage {
       fastestInterval: 5000,
       activitiesInterval: 10000,
     };
-
-    console.log('start');
 
     this.backgroundGeolocation
     .configure(config)

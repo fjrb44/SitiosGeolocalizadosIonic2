@@ -12,4 +12,11 @@
 
 <ion-content padding>
   <h1>Aqui estara el listado de sitios guardados</h1>
+  <ul *ngIf="coordP.getCoord()">
+    <li *ngFor="let coordenada of coordP.getCoord()">
+      <p>Latitud: {{ coordenada.lat }}</p>
+      <p>Longitud: {{ coordenada.lng }}</p>
+      <p>Lugar: {{ coordenada.add }}</p>
+    </li>
+  </ul>
 </ion-content>
